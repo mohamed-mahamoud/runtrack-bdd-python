@@ -1,1 +1,1 @@
-SELECT * FROM etudiant ORDER BY age DESC; ;
+SELECT * FROM etudiant ORDER BY age DESC;
