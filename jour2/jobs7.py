@@ -23,3 +23,49 @@ for row in results:
 
 cursor.close()
 db.close()
+
+class Employe:
+    def __init__(self, nom, prenom, salaire, service):
+        self.nom = nom
+        self.prenom = prenom
+        self.salaire = salaire
+        self.service = service
+
+    def ajouter_employe(self):
+        db= mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="***********", 
+            db="travail",)
+        cursor=db.cursor()
+        cursor.execute("INSERT INTO employe (nom, prenom, salaire, id_service) VALUES (%s, %s, %s, %s)",
+                       (self.nom, self.prenom, self.salaire, self.service))
+        db.commit()
+        cursor.close()
+        
+    def changer_salaire(self, nouveau_salaire):
+        db= mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="***********",
+            db="travail",)
+        cursor=db.cursor()
+        cursor.execute("UPDATE employe SET salaire = %s WHERE nom = %s AND prenom = %s", (nouveau_salaire, self.nom, self.prenom))
+        db.commit()
+        cursor.close()
+        
+    def changer_service(self, nouveau_service):
+        db= mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="***********",
+            db="travail",)
+        cursor=db.cursor()
+        cursor.execute("UPDATE employe SET id_service = %s WHERE nom = %s AND prenom = %s", (nouveau_service, self.nom, self.prenom))
+        db.commit()
+        cursor.close()       
+        
+Employe1 = Employe("Dupont", "Jean", 3500, 1)
+Employe1.ajouter_employe()
+Employe1.changer_salaire(4000)
+Employe1.changer_service(2)         
