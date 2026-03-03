@@ -1,16 +1,15 @@
-﻿import mysql.connector
+import mysql.connector
 
 db= mysql.connector.connect(
     host="localhost",
     user="root",
     password="***********",
-    db="Laplateforme",)
+    db="travail",)
 
 cursor=db.cursor()
-cursor.execute("SELECT nom, capacite FROM salle")
+cursor.execute("SELECT * FROM employe WHERE salaire > 3000")
 results=cursor.fetchall()
 print(results)
 
 cursor.close()
 db.close()
-

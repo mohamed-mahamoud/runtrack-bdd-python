@@ -1,9 +1,9 @@
-import mysql.connector
+﻿import mysql.connector
 
 db= mysql.connector.connect(
     host="localhost",
     user="root",
-    password="MohamedSwain-13010",
+    password="***********",
     db="Laplateforme",)
 
 cursor=db.cursor()
@@ -13,3 +13,4 @@ print(results)
 
 cursor.close()
 db.close()
+
