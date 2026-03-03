@@ -9,8 +9,7 @@ db= mysql.connector.connect(
 cursor=db.cursor()
 cursor.execute("SELECT nom, capacite FROM salle")
 results=cursor.fetchall()
-for nom,capacite in results:
-    print(f"Nom de la salle: {nom}, Capacité: {capacite}")
+print(results)
 
 cursor.close()
 db.close()
